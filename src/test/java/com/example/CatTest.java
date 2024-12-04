@@ -13,14 +13,15 @@ public class CatTest {
     @Test
     public void testGetSound() {
         Cat cat = new Cat(new Feline());
-        assertEquals("Мяу",cat.getSound());
+        assertEquals("Мяу", cat.getSound());
     }
 
     @Test
-    public void testGetFood () throws Exception {
+    public void testGetFood() throws Exception {
         Feline felineMock = Mockito.mock(Feline.class);
         when(felineMock.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Cat cat = new Cat(felineMock);
-        assertEquals(List.of("Животные", "Птицы", "Рыба"),cat.getFood());
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
+
 }
