@@ -22,11 +22,19 @@
 # Build directories
 # Build directories
 /build/
-/target/*
+# Игнорируем всю папку target
+/target/
+
+# Но разрешаем отчёты JaCoCo
 !/target/site/
 !/target/site/jacoco/
 !/target/site/jacoco/index.html
 !/target/site/jacoco/jacoco.xml
+
+# Исключаем всё, что находится глубже в target, кроме указанного
+/target/*/*
+!/target/site/
+!/target/site/jacoco/
 
 
 # IntelliJ IDEA project files
