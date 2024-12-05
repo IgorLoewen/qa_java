@@ -16,7 +16,7 @@ public class CatTest {
         assertEquals("Мяу", cat.getSound());
     }
 
-    @Test
+   @Test
     public void testGetFood() throws Exception {
         Feline felineMock = Mockito.mock(Feline.class);
         when(felineMock.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));

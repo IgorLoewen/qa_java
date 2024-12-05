@@ -24,11 +24,13 @@ public class Feline extends Animal implements Predator, AnimalActions {
     }
 
     @Override
-    public List<String> getFood(String type) throws Exception {
-        if ("Хищник".equals(type)) {
-            return List.of("Мясо", "Рыба");
+    public List<String> getFood(String animalKind) throws Exception {
+        if ("Травоядное".equals(animalKind)) {
+            return List.of("Трава", "Различные растения");
+        } else if ("Хищник".equals(animalKind)) {
+            return List.of("Животные", "Птицы", "Рыба");
         } else {
-            throw new Exception("Тип питания не поддерживается");
+            throw new Exception("Неизвестный вид животного, используйте значение Травоядное или Хищник");
         }
     }
 }
