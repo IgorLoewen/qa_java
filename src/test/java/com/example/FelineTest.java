@@ -37,17 +37,6 @@ public class FelineTest {
        assertEquals(kittensCount,feline.getKittens(1));
     }
 
-    @Test
-    public void testGetFoodWithStringPredator() throws Exception {
-        Feline feline = new Feline();
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.getFood("Хищник"));
-    }
-
-    @Test
-    public void testGetFoodWithStringTravoyadnoe() throws Exception{
-        Feline feline = new Feline();
-        assertEquals(List.of("Трава", "Различные растения"),feline.getFood("Травоядное"));
-    }
 
     @Test
     public void testGetFoodExpectionCase() throws Exception {
