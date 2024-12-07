@@ -1,11 +1,8 @@
 package com.example;
 
-import net.bytebuddy.implementation.bind.annotation.Super;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,9 +12,11 @@ public class FelineTest extends TestsSetUp{
 
     @Test  // Проверка с mockSpy (назвал felineSpion) и вызван мокШпион внутри проверочного класса Feline
            // мокируем только вызов метода getFood и выводим фиктивный результат списка
+           // А так же проверяю с помощью Mockito.verify, что метод getFood("Хищник") был реально вызван
     public void testEatMeat()throws Exception{
      when(felineSpion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
      assertEquals(List.of("Животные", "Птицы", "Рыба"),felineSpion.eatMeat());
+     Mockito.verify(felineSpion).getFood("Хищник");
     }
 
     @Test // простая проверка метода getFamily(), которая прям там возврашает строку "Кошачьи"
@@ -36,12 +35,13 @@ public class FelineTest extends TestsSetUp{
         int Parameter = 1;
         assertEquals(1,feline.getKittens(Parameter));
     }
-
-    @Test // Проверяю чисто реализацию вызова метода feline.getFood строгим юнит тестом внутри класса feline
+    @Test  //Mockito.doReturn
+          // Проверяю чисто реализацию вызова метода feline.getFood строгим юнит тестом внутри класса feline
           // Метод совсем простой и саму реализацию не проверяю, а мокаю только вызов super.getFood("Хищник")
+          // А так же проверяю с помощью Mockito.verify, что метод getFood("Хищник") был реально вызван
     public void testGetFoodWithSpy()throws Exception{
         Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(felineSpion).getFood("Хищник");
         assertEquals(List.of("Животные", "Птицы", "Рыба"),felineSpion.getFood("Хищник"));
-
+        Mockito.verify(felineSpion).getFood("Хищник");
     }
 }
