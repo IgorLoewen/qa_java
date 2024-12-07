@@ -83,12 +83,22 @@
                     </execution>
                     <execution>
                         <id>report</id>
-                        <phase>post-integration-test</phase>
+                        <phase>package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <!-- Включаем покрытие всех классов -->
+                    <includes>
+                        <include>com/example/*</include>
+                    </includes>
+                    <!-- Исключения, если есть какие-то утилитарные или ненужные для отчёта классы -->
+                    <excludes>
+                        <exclude>com/example/util/**</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
