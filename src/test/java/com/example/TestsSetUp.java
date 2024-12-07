@@ -9,14 +9,14 @@ public class TestsSetUp {
 
     //Тут я выношу все мне нужные объекты для всех тестов и объявляю их
     protected Feline feline;
-    protected Lion lion;
     protected IndependentLion independentLion;
 
     protected Feline mockitorFeline;
     protected Feline felineSpion;
 
-    protected IndependentLion independentLionSpion;
     protected IndependentLion mockitorIndependentLion;
+
+    protected String sex;
 
 
 
@@ -24,7 +24,7 @@ public class TestsSetUp {
     @BeforeEach
     public void initializeObjects() throws Exception {
         feline = new Feline();
-
+        sex = "Самец"; // Значение по умолчанию
 
         mockitorFeline = Mockito.mock(Feline.class);
         felineSpion = Mockito.spy(new Feline());
@@ -32,11 +32,6 @@ public class TestsSetUp {
         mockitorIndependentLion = Mockito.mock(IndependentLion.class);
 
 
-
-
     }
-
-
-
 
 }

@@ -24,17 +24,22 @@ public class FelineTest extends TestsSetUp{
       assertEquals("Кошачьи",feline.getFamily());
     }
 
+
     @Test// Тоже самая простая проверка, переписания метода со значением 1 в поле. По моему без пояснений понятно
     public void testGetKittens(){
         assertEquals(1,feline.getKittens());
     }
 
+
     @Test // Проверка переписания метода со значением. Принимает параметр любым целым числом типа данных int
           // Возможна параметризация, но что то особо не вижу смысла в данном случае. Метод 100% проверяется одним значением с такой логикой.
+          // Но отдельно добавил и параметризованный тест в ParametrizedTest
     public void testGetKittensOverWritten(){
         int Parameter = 1;
         assertEquals(1,feline.getKittens(Parameter));
     }
+
+
     @Test  //Mockito.doReturn
           // Проверяю чисто реализацию вызова метода feline.getFood строгим юнит тестом внутри класса feline
           // Метод совсем простой и саму реализацию не проверяю, а мокаю только вызов super.getFood("Хищник")
