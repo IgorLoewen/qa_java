@@ -5,10 +5,10 @@ import java.util.List;
 public class Lion {
 
  private boolean hasMane;
- private IndependentLion Lion;
+ private IndependentLion independentLion;
 
-    public Lion(String sex, IndependentLion Lion) throws Exception {
-        this.Lion = Lion;
+    public Lion(String sex, IndependentLion independentLion) throws Exception {
+        this.independentLion = independentLion;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -21,7 +21,7 @@ public class Lion {
 
 
     public int getKittens() {
-        return Lion.getKittens();
+        return independentLion.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -29,6 +29,6 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return Lion.getFood("Хищник");
+        return independentLion.getFood("Хищник");
     }
 }
