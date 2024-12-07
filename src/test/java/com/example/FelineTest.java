@@ -1,8 +1,11 @@
 package com.example;
 
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,5 +35,13 @@ public class FelineTest extends TestsSetUp{
     public void testGetKittensOverWritten(){
         int Parameter = 1;
         assertEquals(1,feline.getKittens(Parameter));
+    }
+
+    @Test // Проверяю чисто реализацию вызова метода feline.getFood строгим юнит тестом внутри класса feline
+          // Метод совсем простой и саму реализацию не проверяю, а мокаю только вызов super.getFood("Хищник")
+    public void testGetFoodWithSpy()throws Exception{
+        Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(felineSpion).getFood("Хищник");
+        assertEquals(List.of("Животные", "Птицы", "Рыба"),felineSpion.getFood("Хищник"));
+
     }
 }
