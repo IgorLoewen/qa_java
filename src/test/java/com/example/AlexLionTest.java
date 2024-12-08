@@ -2,7 +2,6 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.invoke.WrongMethodTypeException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
