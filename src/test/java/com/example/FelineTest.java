@@ -10,19 +10,11 @@ import static org.mockito.Mockito.when;
 
 public class FelineTest extends TestsSetUp{
 
-    @Test // Проверка вызова метода getFood("Хищник") у мокШпиона Feline
-          // важно для следующего теста!
-    public void testGetFoodCalled() throws Exception {
-        when(felineSpion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        felineSpion.eatMeat();
-        Mockito.verify(felineSpion).getFood("Хищник");
-    }
+    @Test
+    public void testEatMeat() throws Exception {
+        Feline feline = new Feline();
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());}
 
-    @Test // Проверка, что метод eatMeat() возвращает ожидаемый результат
-    public void testEatMeatReturnsCorrectValue() throws Exception {
-        when(felineSpion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), felineSpion.eatMeat());
-    }
 
 
     @Test // простая проверка метода getFamily(), которая прям там возврашает строку "Кошачьи"
@@ -46,19 +38,20 @@ public class FelineTest extends TestsSetUp{
     }
 
 
-    @Test // Проверка, что метод getFood("Хищник") у мокШпиона был вызван!
-           // важно для следующего теста!
-    public void testGetFoodCalledWithSpy() throws Exception {
-        Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(felineSpion).getFood("Хищник");
-        felineSpion.getFood("Хищник");
-        Mockito.verify(felineSpion).getFood("Хищник");
+    @Test // Проверка вызова метода getFood("Хищник") у реального объекта Feline
+    public void testGetFoodCalled() throws Exception {
+        Feline feline = new Feline();
+        feline.getFood("Хищник");
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.getFood("Хищник"));
     }
 
-    @Test // Проверка результата работы метода getFood("Хищник") у мокШпиона
-    public void testGetFoodReturnsCorrectValueWithSpy() throws Exception {
-        Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(felineSpion).getFood("Хищник");
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), felineSpion.getFood("Хищник"));
+
+    @Test // Проверка результата работы метода getFood("Хищник") у реального объекта Feline
+    public void testGetFoodReturnsCorrectValue() throws Exception {
+        Feline feline = new Feline();
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.getFood("Хищник"));
     }
+
 
 
 }
