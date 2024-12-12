@@ -16,13 +16,19 @@ public class CatTest extends TestsSetUp{
         assertEquals("Мяу",cat.getSound());
     }
 
-    @Test // Проверка с Mock заглушкой класса Feline (назвал mockitorFeline) и вызван в классе Cat в кострукторе
-          // Получается глушу весь класс Feline в конструкторе объекта cat
-         // А так же проверяю с помощью Mockito.verify, что метод eatMeat() был реально вызван
-    public void testGetFood()throws Exception{
+    @Test // Проверка вызова метода eatMeat() у замокированного объекта Feline
+    public void testEatMeatCalled() throws Exception {
         when(mockitorFeline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Cat cat = new Cat(mockitorFeline);
-        assertEquals(List.of("Животные", "Птицы", "Рыба"),cat.getFood());
+        cat.getFood();
         Mockito.verify(mockitorFeline).eatMeat();
     }
+
+    @Test // Проверка, что метод getFood() возвращает ожидаемый результат
+    public void testGetFoodReturnsCorrectValue() throws Exception {
+        when(mockitorFeline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Cat cat = new Cat(mockitorFeline);
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
+    }
+
 }

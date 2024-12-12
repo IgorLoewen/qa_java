@@ -10,15 +10,22 @@ import static org.mockito.Mockito.when;
 
 public class LionTest extends TestsSetUp {
 
-    @Test // Изолированный юнит тест с мокированием в конструкторе класса интерфейcа IndependetLion
-          // с помощью объекта mockitorIndependentLion, который наследуется из TestsSetUp
-          // и добавлена проверка verify, что метод getKittens() вызывается
-    public void testGetKittens()throws Exception{
-       when(mockitorIndependentLion.getKittens()).thenReturn(1);
-       Lion lion = new Lion(sex,mockitorIndependentLion);
-       assertEquals(1,lion.getKittens());
-       Mockito.verify(mockitorIndependentLion).getKittens();
+    @Test // Проверка, что метод getKittens() был вызван
+          // важно для следующего теста!
+    public void testGetKittensCalled() throws Exception {
+        when(mockitorIndependentLion.getKittens()).thenReturn(1);
+        Lion lion = new Lion(sex, mockitorIndependentLion);
+        lion.getKittens();
+        Mockito.verify(mockitorIndependentLion).getKittens();
     }
+
+    @Test // Проверка результата работы метода getKittens()
+    public void testGetKittensReturnsCorrectValue() throws Exception {
+        when(mockitorIndependentLion.getKittens()).thenReturn(1);
+        Lion lion = new Lion(sex, mockitorIndependentLion);
+        assertEquals(1, lion.getKittens());
+    }
+
 
     @Test // Отдельный простой юнит тест для проверки булевого метода doesHaveMane
           // проверяем отдельно "Самец" и возращение true
@@ -47,13 +54,21 @@ public class LionTest extends TestsSetUp {
                       exception.getMessage());
     }
 
-    @Test // проверка с помощью мокирования mockitorIndependentLion класса интрефейса
-          // и передачи этого мока в конструкто объекта Lion
-    public void testGetFood()throws Exception{
+    @Test // Проверка, что метод getFood() был вызван с правильным параметром
+           // важно для следующего теста!
+    public void testGetFoodCalled() throws Exception {
         when(mockitorIndependentLion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        Lion lion = new Lion(sex,mockitorIndependentLion);
-        assertEquals(List.of("Животные", "Птицы", "Рыба"),lion.getFood());
+        Lion lion = new Lion(sex, mockitorIndependentLion);
+        lion.getFood(); // Вызываем метод
         Mockito.verify(mockitorIndependentLion).getFood("Хищник");
+    }
+
+
+    @Test // Проверка результата работы метода getFood()
+    public void testGetFoodReturnsCorrectValue() throws Exception {
+        when(mockitorIndependentLion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Lion lion = new Lion(sex, mockitorIndependentLion);
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
 
 }

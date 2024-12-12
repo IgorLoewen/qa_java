@@ -10,14 +10,20 @@ import static org.mockito.Mockito.when;
 
 public class FelineTest extends TestsSetUp{
 
-    @Test  // Проверка с mockSpy (назвал felineSpion) и вызван мокШпион внутри проверочного класса Feline
-           // мокируем только вызов метода getFood и выводим фиктивный результат списка
-           // А так же проверяю с помощью Mockito.verify, что метод getFood("Хищник") был реально вызван
-    public void testEatMeat()throws Exception{
-     when(felineSpion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-     assertEquals(List.of("Животные", "Птицы", "Рыба"),felineSpion.eatMeat());
-     Mockito.verify(felineSpion).getFood("Хищник");
+    @Test // Проверка вызова метода getFood("Хищник") у мокШпиона Feline
+          // важно для следующего теста!
+    public void testGetFoodCalled() throws Exception {
+        when(felineSpion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        felineSpion.eatMeat();
+        Mockito.verify(felineSpion).getFood("Хищник");
     }
+
+    @Test // Проверка, что метод eatMeat() возвращает ожидаемый результат
+    public void testEatMeatReturnsCorrectValue() throws Exception {
+        when(felineSpion.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), felineSpion.eatMeat());
+    }
+
 
     @Test // простая проверка метода getFamily(), которая прям там возврашает строку "Кошачьи"
     public void testGetFamily(){
@@ -40,13 +46,19 @@ public class FelineTest extends TestsSetUp{
     }
 
 
-    @Test  //Mockito.doReturn
-          // Проверяю чисто реализацию вызова метода feline.getFood строгим юнит тестом внутри класса feline
-          // Метод совсем простой и саму реализацию не проверяю, а мокаю только вызов super.getFood("Хищник")
-          // А так же проверяю с помощью Mockito.verify, что метод getFood("Хищник") был реально вызван
-    public void testGetFoodWithSpy()throws Exception{
+    @Test // Проверка, что метод getFood("Хищник") у мокШпиона был вызван!
+           // важно для следующего теста!
+    public void testGetFoodCalledWithSpy() throws Exception {
         Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(felineSpion).getFood("Хищник");
-        assertEquals(List.of("Животные", "Птицы", "Рыба"),felineSpion.getFood("Хищник"));
+        felineSpion.getFood("Хищник");
         Mockito.verify(felineSpion).getFood("Хищник");
     }
+
+    @Test // Проверка результата работы метода getFood("Хищник") у мокШпиона
+    public void testGetFoodReturnsCorrectValueWithSpy() throws Exception {
+        Mockito.doReturn(List.of("Животные", "Птицы", "Рыба")).when(felineSpion).getFood("Хищник");
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), felineSpion.getFood("Хищник"));
+    }
+
+
 }
