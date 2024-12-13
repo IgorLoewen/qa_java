@@ -23,6 +23,8 @@
 # Build directories
 /build/
 # Игнорируем всю папку target, но не другие разрешаем
+/target/
+*.tmp
 !/docs/
 
 # IntelliJ IDEA project files
