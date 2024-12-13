@@ -17,6 +17,7 @@ public class CatTest extends TestsSetUp{
     }
 
     @Test // Проверка вызова метода eatMeat() у замокированного объекта Feline
+          // важно для следующего теста!
     public void testEatMeatCalled() throws Exception {
         when(mockitorFeline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Cat cat = new Cat(mockitorFeline);
