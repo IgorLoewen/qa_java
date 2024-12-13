@@ -1,7 +1,7 @@
-# Compiled class file
+# Compiled class files
 *.class
 
-# Log file
+# Log files
 *.log
 
 # BlueJ files
@@ -20,12 +20,11 @@
 *.rar
 
 # Build directories
-# Build directories
 /build/
-# Игнорируем всю папку target, но не другие разрешаем
 /target/
+
+# Temporary files
 *.tmp
-!/docs/
 
 # IntelliJ IDEA project files
 .idea/
@@ -47,11 +46,14 @@ hs_err_pid*
 Thumbs.db
 *.swp
 
-# JaCoCo generated reports
-**/jacoco-resources/
-**/*.html
-**/*.css
-**/*.gif
-**/*.js
-jacoco.csv
-jacoco.xml
+# Exclude temporary JaCoCo files but allow reports
+**/jacoco.exec
+
+# Keep everything in `src/` and `docs/`
+!src/com/main/
+!src/com/test/
+!docs/jacoco-resources
+
+docs/jacoco.csv
+docs/jacoco.xml
+
