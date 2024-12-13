@@ -4,8 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-public class GetKittensOverwrittenParametrizedTest extends TestsSetUp {
+public class GetKittensOverWrittenParametrizedTest extends TestsSetUp {
 
     @ParameterizedTest // Проверка метода doesHaveMane() класса Lion.
     // Использую @CsvSource для передачи сразу двух параметров: значения пола String и ожидаемого результата boolean
