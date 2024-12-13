@@ -23,8 +23,7 @@
 # Build directories
 /build/
 # Игнорируем всю папку target, но не другие разрешаем
-/target/
-!/target/site/jacoco/
+!/docs/
 
 # IntelliJ IDEA project files
 .idea/
