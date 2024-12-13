@@ -33,7 +33,7 @@
    ```
 6. Откройте отчет JaCoCo:
    ```
-   target/site/jacoco/index.html
+   docs/site/jacoco/index.html
    ```
 
 ## Структура проекта

@@ -87,6 +87,10 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <!-- Указываем директорию для отчёта -->
+                            <outputDirectory>${project.basedir}/docs/site/jacoco</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
