@@ -89,7 +89,7 @@
                         </goals>
                         <configuration>
                             <!-- Указываем директорию для отчёта -->
-                            <outputDirectory>${project.basedir}/docs/site/jacoco</outputDirectory>
+                            <outputDirectory>${project.basedir}/docs</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>

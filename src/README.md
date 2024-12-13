@@ -17,7 +17,7 @@
 1. Убедитесь, что у вас установлен **JDK 11** (или новее) и **Maven**.
 2. Клонируйте репозиторий:
    ```bash
-   git clone <URL_репозитория>
+   git clone https://github.com/IgorLoewen/qa_java
    ```
 3. Перейдите в директорию проекта:
    ```bash
@@ -33,7 +33,7 @@
    ```
 6. Откройте отчет JaCoCo:
    ```
-   docs/site/jacoco/index.html
+   open docs/index.html
    ```
 
 ## Структура проекта
