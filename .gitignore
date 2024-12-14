@@ -1,7 +1,7 @@
-# Compiled class file
+# Compiled class files
 *.class
 
-# Log file
+# Log files
 *.log
 
 # BlueJ files
@@ -19,5 +19,41 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Build directories
+/build/
+/target/
+
+# Temporary files
+*.tmp
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Eclipse project files
+.project
+.classpath
+.settings/
+
+# Maven specific files
+.mvn/
+
+# Virtual machine crash logs
 hs_err_pid*
+
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Exclude temporary JaCoCo files but allow reports
+**/jacoco.exec
+
+# Keep everything in `src/` and `docs/`
+!src/com/main/
+!src/com/test/
+!docs/jacoco-resources
+
+docs/jacoco.csv
+docs/jacoco.xml
+
